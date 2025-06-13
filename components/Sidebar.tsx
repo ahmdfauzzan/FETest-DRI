@@ -17,10 +17,6 @@ import {
 import Image from "next/image";
 import logo from "@/assets/logosqure.png";
 
-interface SidebarProps {
-  className?: string;
-}
-
 const menuItems = [
   { icon: LayoutDashboard, label: "Dashboard", badge: "3" },
   { icon: Package, label: "Stock" },
@@ -37,12 +33,13 @@ const integrationItems = [
   { icon: Package, label: "Supply" },
 ];
 
-export function Sidebar({ className = "" }: SidebarProps) {
+export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   return (
     <>
+      {/* Tombol untuk membuka sidebar di mode mobile */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
         className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white rounded-lg shadow-md"
@@ -50,6 +47,7 @@ export function Sidebar({ className = "" }: SidebarProps) {
         <Menu className="w-6 h-6" />
       </button>
 
+      {/* Overlay hitam ketika sidebar mobile terbuka */}
       {isMobileOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -57,16 +55,25 @@ export function Sidebar({ className = "" }: SidebarProps) {
         />
       )}
 
+      {/* Sidebar */}
       <div
         className={`fixed left-0 top-0 h-full bg-white border-r border-gray-200 transition-all duration-300 z-40 ${
           isCollapsed ? "w-16" : "w-64"
         } ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        } ${className}`}
+        }`}
       >
+        {/* Header sidebar */}
         <div className="flex items-center justify-between p-4 border-b border-gray-100">
           <div className="flex items-center space-x-3">
-            {!isCollapsed && <Image src={logo} alt="Logo" className="h-6" />}
+            {!isCollapsed && (
+              <button
+                onClick={() => window.location.reload()}
+                className="focus:outline-none"
+              >
+                <Image src={logo} alt="Logo" className="h-10 w-auto" />
+              </button>
+            )}
           </div>
 
           <button
@@ -81,6 +88,7 @@ export function Sidebar({ className = "" }: SidebarProps) {
           </button>
         </div>
 
+        {/* Menu utama */}
         <div className="p-4">
           {!isCollapsed && (
             <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-4">
@@ -121,6 +129,7 @@ export function Sidebar({ className = "" }: SidebarProps) {
           </nav>
         </div>
 
+        {/* Menu Integrasi */}
         <div className="p-4">
           {!isCollapsed && (
             <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-4">
@@ -141,6 +150,7 @@ export function Sidebar({ className = "" }: SidebarProps) {
           </nav>
         </div>
 
+        {/* Bagian bawah (user dan logout) */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-100">
           <div className="flex items-center space-x-3 mb-4">
             <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
@@ -158,10 +168,12 @@ export function Sidebar({ className = "" }: SidebarProps) {
             )}
           </div>
           {!isCollapsed && (
-            <button className="flex items-center space-x-2 text-sm text-red-600 hover:text-red-700 transition-colors">
-              <LogOut className="w-4 h-4" />
-              <span>Logout</span>
-            </button>
+            <div className="p-4 flex justify-center">
+              <button className="flex items-center space-x-2 px-4 py-2 bg-red-100 text-red-700 hover:bg-red-300 rounded-lg text-sm font-medium transition-colors">
+                <LogOut className="w-4 h-4" />
+                <span>Logout</span>
+              </button>
+            </div>
           )}
         </div>
       </div>

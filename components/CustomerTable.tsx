@@ -25,13 +25,13 @@ interface CustomerTableProps {
 
 const levelColors = {
   Warga:
-    "inline-flex px-3 py-1 text-xs font-medium bg-orange-100 text-orange-700",
+    "inline-flex px-3 py-1 text-sm font-medium bg-orange-100 text-orange-700",
   Juragan:
-    "inline-flex px-3 py-1 text-xs font-medium bg-cyan-100 text-cyan-700",
+    "inline-flex px-3 py-1 text-sm font-medium bg-cyan-100 text-cyan-700",
   Sultan:
-    "inline-flex px-3 py-1 text-xs font-medium bg-emerald-100 text-emerald-700",
+    "inline-flex px-3 py-1 text-sm font-medium bg-emerald-100 text-emerald-700",
   Konglomerat:
-    "inline-flex px-3 py-1 text-xs font-medium bg-purple-100 text-purple-700",
+    "inline-flex px-3 py-1 text-sm font-medium bg-purple-100 text-purple-700",
 };
 
 export function CustomerTable({ customers, totalPages }: CustomerTableProps) {
@@ -150,7 +150,7 @@ export function CustomerTable({ customers, totalPages }: CustomerTableProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden mb-10">
+    <div className="bg-white rounded-xl border border-gray-200 overflow-hidden mb-10 mt-10">
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50/50 border-b border-gray-100 hidden md:table-header-group">
@@ -191,7 +191,7 @@ export function CustomerTable({ customers, totalPages }: CustomerTableProps) {
                 key={customer.id}
                 className="border-b md:table-row flex flex-col md:flex-row"
               >
-                <td className="px-6 py-4 text-sm font-bold">
+                <td className="px-6 py-4 text-md font-bold">
                   <span className="block md:hidden text-gray-500 font-semibold mb-1">
                     Customer Name:
                   </span>
@@ -205,13 +205,13 @@ export function CustomerTable({ customers, totalPages }: CustomerTableProps) {
                     {customer.level}
                   </span>
                 </td>
-                <td className="px-6 py-4 text-sm font-bold">
+                <td className="px-6 py-4 text-md font-bold">
                   <span className="block md:hidden text-gray-500 font-semibold mb-1">
                     Favorite Menu:
                   </span>
                   {customer.favoriteMenu}
                 </td>
-                <td className="px-6 py-4 text-sm font-bold">
+                <td className="px-6 py-4 text-md font-bold">
                   <span className="block md:hidden text-gray-500 font-semibold mb-1">
                     Total Transaction:
                   </span>
@@ -220,8 +220,8 @@ export function CustomerTable({ customers, totalPages }: CustomerTableProps) {
                 <td className="px-6 py-4">
                   <div className="flex justify-end space-x-2">
                     <button className="bg-gray-100 flex items-center space-x-2 px-3 py-2 text-sm text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors hover:border-blue-200">
-                      <Eye className="w-4 h-4" />
-                      <span>Detail</span>
+                      <Eye className="w-4" />
+                      <span className="font-bold">Detail</span>
                     </button>
                     <button className="p-2 text-gray-400 hover:text-green-600 hover:bg-green-50 rounded-lg transition bg-gray-100">
                       <Edit className="w-4 h-4" />
