@@ -10,6 +10,7 @@ import { CustomerTable } from "@/components/CustomerTable";
 import { AddCustomerModal } from "@/components/AddCustomerModal";
 import { AnalyticsSidebar } from "@/components/AnalyticsSidebar";
 import { Plus, Search, Filter, RefreshCw, Grid3X3, Menu } from "lucide-react";
+import imageklrg from "@/assets/img1.jpg";
 
 const tabs = [
   { name: "Customer", active: true },
@@ -121,7 +122,7 @@ function HomeContent() {
                 <div
                   className="w-full h-full bg-cover bg-center"
                   style={{
-                    backgroundImage: `url("https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800")`,
+                    backgroundImage: `url(${imageklrg.src})`,
                     clipPath: "polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%)",
                   }}
                 />
